@@ -16,6 +16,20 @@ class Employee {
         age: json['employee_age']);
   }
 
+  static List<Employee> generateEmployeeList(List<dynamic> emplist) {
+    List<Employee> empfetched = List<Employee>();
+
+    for (var emp in emplist) {
+      empfetched.add(Employee(
+          id: emp['id'],
+          name: emp['employee_name'],
+          salary: emp['employee_salary'],
+          image: emp['profile_image'],
+          age: emp['employee_age']));
+    }
+    return empfetched;
+  }
+
   @override
   String toString() =>
       'User { name: $name, id: $id, salary: $salary, age: $age, image: $image}';
