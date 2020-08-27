@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:rest/models/employee.dart';
 import 'package:rest/theme/colors.dart';
 
-Widget EmployeeGrid({Employee e}) {
+Widget employeeGrid({Employee e}) {
   return Container(
       margin: EdgeInsets.all(5),
       decoration: BoxDecoration(
