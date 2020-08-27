@@ -4,7 +4,7 @@ import 'package:rest/models/employee.dart';
 
 Widget gridBuilder(var context, bool por, List<Employee> emps) {
   int col = 2;
-  if (!por == Orientation.landscape) {
+  if (por == false) {
     col = 3;
   }
 

@@ -6,6 +6,7 @@ import 'package:rest/theme/font.dart';
 
 Widget employeeList({Employee e}) {
   return Container(
+    height: 100,
     margin: EdgeInsets.all(10),
     padding: EdgeInsets.all(10),
     decoration: BoxDecoration(boxShadow: [
@@ -15,7 +16,7 @@ Widget employeeList({Employee e}) {
         blurRadius: 5.0,
         spreadRadius: 2.0,
       ),
-    ], color: Colors.white, borderRadius: BorderRadius.circular(15)),
+    ], color: Colors.white, borderRadius: BorderRadius.circular(10)),
     child: Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
@@ -127,7 +128,7 @@ Widget employeeList({Employee e}) {
 
 Widget _error(BuildContext context, String url, dynamic error) {
   print(error);
-  return const Center(child: Icon(Icons.error));
+  return Image.asset('assets/person.png');
 }
 
 Widget _progress(BuildContext context, String url, dynamic downloadProgress) {

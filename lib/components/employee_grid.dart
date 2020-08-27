@@ -7,7 +7,7 @@ Widget employeeGrid({Employee e}) {
   return Container(
       margin: EdgeInsets.all(5),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(15),
+        borderRadius: BorderRadius.circular(10),
         boxShadow: [
           BoxShadow(
             color: Colors.grey[300],
@@ -51,15 +51,35 @@ Widget employeeGrid({Employee e}) {
                                 color: darksecond,
                                 fontWeight: FontWeight.bold),
                           ),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  "Age: " + e.age,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: TextStyle(
+                                      fontSize: 10, color: darksecond),
+                                ),
+                              ),
+                              Expanded(
+                                child: Text(
+                                  "ID: " + e.id,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                  textAlign: TextAlign.end,
+                                  style: TextStyle(
+                                      fontSize: 10, color: darksecond),
+                                ),
+                              )
+                            ],
+                          ),
                           Text(
-                            e.salary.toString() + " ETB",
+                            "Salary: " + e.salary + " ETB",
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             textAlign: TextAlign.end,
-                            style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.bold,
-                                color: darksecond),
+                            style: TextStyle(fontSize: 10, color: darksecond),
                           ),
                         ],
                       ),
@@ -69,7 +89,7 @@ Widget employeeGrid({Employee e}) {
 
 Widget _error(BuildContext context, String url, dynamic error) {
   print(error);
-  return const Center(child: Icon(Icons.error));
+  return Image.asset('assets/person.png');
 }
 
 Widget _progress(BuildContext context, String url, dynamic downloadProgress) {

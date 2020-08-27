@@ -1,8 +1,8 @@
 class Employee {
   String name;
-  int salary;
-  int age;
-  int id;
+  String salary;
+  String age;
+  String id;
   String image;
 
   Employee({this.name, this.salary, this.age, this.id, this.image});
@@ -20,6 +20,7 @@ class Employee {
     List<Employee> empfetched = List<Employee>();
 
     for (var emp in emplist) {
+      print(emp);
       empfetched.add(Employee(
           id: emp['id'],
           name: emp['employee_name'],

@@ -14,7 +14,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   List<Employee> fetched;
-  bool grid;
+  bool grid = true;
   int page = 0;
   String error = "";
 
@@ -26,34 +26,52 @@ class _MyAppState extends State<MyApp> {
 
   @override
   initState() {
-    setState(() {
-      fetched = APIProvider.fetch() as List<Employee>;
-      error = "";
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _asyncMethod();
     });
+  }
+
+  _asyncMethod() async {
+    setState(() {
+      fetched = null;
+    });
+    APIProvider.fetch()
+        .then((value) => {
+              setState(() {
+                fetched = value;
+                error = "";
+              })
+            })
+        .catchError((e) => {
+              setState(() {
+                error = e.message.toString();
+              })
+            });
   }
 
   @override
   Widget build(BuildContext context) {
-    setState(() {
-      error = "";
-    });
     Widget create(bool por) {
       if (por) {
         return Container(
+          color: primary,
           child: Text(""),
           width: double.maxFinite,
-          height: 300,
+          height: 150,
         );
       }
       return Container(
+        color: primary,
         child: Text(""),
-        width: 500,
+        width: 150,
         height: double.maxFinite,
       );
     }
 
     Widget employees(bool por) {
       return Container(
+        padding: EdgeInsets.symmetric(horizontal: 5),
         child: Column(
           children: [
             Row(
@@ -61,19 +79,13 @@ class _MyAppState extends State<MyApp> {
               children: [
                 InkWell(
                   onTap: () async {
-                    setState(() {
-                      try {
-                        fetched = null;
-                        fetched = APIProvider.fetch() as List<Employee>;
-                        error = "";
-                      } catch (e) {
-                        setState(() {
-                          error = e.message.toString();
-                        });
-                      }
-                    });
+                    _asyncMethod();
                   },
-                  child: Icon(Icons.refresh, color: primary),
+                  child: Icon(
+                    Icons.refresh,
+                    color: primary,
+                    size: 30,
+                  ),
                 ),
                 Expanded(
                   child: Row(
@@ -85,8 +97,11 @@ class _MyAppState extends State<MyApp> {
                             grid = false;
                           });
                         },
-                        child: Icon(Icons.list,
-                            color: grid ? extralight : primary),
+                        child: Icon(
+                          Icons.list,
+                          color: grid ? extralight : primary,
+                          size: 30,
+                        ),
                       ),
                       SizedBox(
                         width: 5,
@@ -97,23 +112,26 @@ class _MyAppState extends State<MyApp> {
                             grid = true;
                           });
                         },
-                        child: Icon(Icons.grid_on,
-                            color: grid ? primary : extralight),
+                        child: Icon(
+                          Icons.grid_on,
+                          color: grid ? primary : extralight,
+                          size: 30,
+                        ),
                       ),
                     ],
                   ),
                 ),
               ],
             ),
-            error == ""
+            error.length < 1
                 ? fetched != null
                     ? Expanded(
                         child: grid
                             ? gridBuilder(context, por, fetched)
                             : listBuilder(context, fetched),
                       )
-                    : loading(context)
-                : showerror(context, '', error)
+                    : Expanded(child: loading(context))
+                : Expanded(child: showerror(context, '', error))
           ],
         ),
       );
@@ -148,20 +166,12 @@ class _MyAppState extends State<MyApp> {
 
     return Scaffold(
       body: SafeArea(
-        child: Container(
-          child: Column(
-            children: [],
-          ),
-        ),
+        child: Container(child: layout()),
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.group),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-          ),
+          BottomNavigationBarItem(icon: Icon(Icons.group), title: Text("")),
+          BottomNavigationBarItem(icon: Icon(Icons.search), title: Text("")),
         ],
         currentIndex: page,
         selectedItemColor: Colors.amber[800],
