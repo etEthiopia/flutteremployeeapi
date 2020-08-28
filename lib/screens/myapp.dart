@@ -399,7 +399,12 @@ class _MyAppState extends State<MyApp> {
           children: [
             create(),
             Expanded(
-              child: page == 0 ? employees() : SearchEmp(),
+              child: page == 0
+                  ? employees()
+                  : Container(
+                      child: SearchEmp(),
+                      margin: EdgeInsets.only(top: 50),
+                    ),
             )
           ],
         );
@@ -408,7 +413,12 @@ class _MyAppState extends State<MyApp> {
         children: [
           create(),
           Expanded(
-            child: page == 0 ? employees() : SearchEmp(),
+            child: page == 0
+                ? employees()
+                : Container(
+                    child: SearchEmp(),
+                    margin: EdgeInsets.only(left: 50),
+                  ),
           )
         ],
       );

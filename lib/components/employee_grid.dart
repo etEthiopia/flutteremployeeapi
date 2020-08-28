@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:rest/models/employee.dart';
 import 'package:rest/theme/colors.dart';
@@ -36,7 +35,7 @@ Widget employeeGrid({Employee e}) {
                                   bottomLeft: Radius.circular(10),
                                   bottomRight: Radius.circular(10)),
                             ),
-                            child: loadimage(e.image))),
+                            child: _image())),
                     footer: Container(
                       decoration: BoxDecoration(
                         color: primary,
@@ -102,8 +101,7 @@ Widget employeeGrid({Employee e}) {
                   )))));
 }
 
-Widget _error(BuildContext context, String url, dynamic error) {
-  print(error);
+Widget _image() {
   return Container(
       padding: EdgeInsets.all(25),
       decoration: BoxDecoration(
@@ -111,17 +109,4 @@ Widget _error(BuildContext context, String url, dynamic error) {
             bottomLeft: Radius.circular(10), bottomRight: Radius.circular(10)),
       ),
       child: Image.asset('assets/person.png'));
-}
-
-Widget _progress(BuildContext context, String url, dynamic downloadProgress) {
-  return Center(
-      child: CircularProgressIndicator(value: downloadProgress.progress));
-}
-
-Widget loadimage(String image) {
-  return CachedNetworkImage(
-    imageUrl: '$image',
-    progressIndicatorBuilder: _progress,
-    errorWidget: _error,
-  );
 }

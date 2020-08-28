@@ -8,7 +8,10 @@ Widget showerror(var context, String route, String error) {
       children: [
         Expanded(
           child: Center(
-            child: Text(error),
+            child: Text(
+              error,
+              style: TextStyle(fontSize: 25, color: Colors.white),
+            ),
           ),
         ),
         Expanded(

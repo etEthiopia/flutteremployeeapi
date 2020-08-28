@@ -17,16 +17,16 @@ class APIProvider {
                 Employee.generateEmployeeList(json.decode(res.body)['data']);
             return emps;
           } else {
-            print("unsuccessful");
-            throw Exception("unsuccessful");
+            print("Sorry, request is unsuccessful");
+            throw Exception("Sorry, request is unsuccessful");
           }
         } else {
-          print("res-body is null");
-          throw Exception("res-body is null");
+          print("Sorry, response was null");
+          throw Exception("Sorry, response was null");
         }
       } else {
-        print("res-code: " + res.statusCode.toString());
-        throw Exception("res-code: " + res.statusCode.toString());
+        print("response returned: " + res.statusCode.toString());
+        throw Exception("Sorry, response was null");
       }
     } on SocketException {
       print('Internet Error');

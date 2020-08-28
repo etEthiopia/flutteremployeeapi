@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:rest/models/employee.dart';
 import 'package:rest/theme/colors.dart';
@@ -32,7 +31,7 @@ Widget employeeList({Employee e}) {
                     borderRadius: BorderRadius.all(
                   Radius.circular(5),
                 )),
-                child: loadimage(e.image),
+                child: _image(),
               ),
               Text(
                 "ID:  ${e.id}",
@@ -137,8 +136,7 @@ Widget employeeList({Employee e}) {
   );
 }
 
-Widget _error(BuildContext context, String url, dynamic error) {
-  print(error);
+Widget _image() {
   return Container(
     padding: EdgeInsets.all(5),
     decoration: BoxDecoration(boxShadow: [
@@ -149,17 +147,4 @@ Widget _error(BuildContext context, String url, dynamic error) {
     child: Image.asset('assets/person.png'),
   );
   ;
-}
-
-Widget _progress(BuildContext context, String url, dynamic downloadProgress) {
-  return Center(
-      child: CircularProgressIndicator(value: downloadProgress.progress));
-}
-
-Widget loadimage(String image) {
-  return CachedNetworkImage(
-    imageUrl: '$image',
-    progressIndicatorBuilder: _progress,
-    errorWidget: _error,
-  );
 }
