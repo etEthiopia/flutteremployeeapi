@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-Color dark = Color(0XFF005F7F);
+Color darksecond = Color(0xFF84323B);
 
-Color darksecond = Color(0xFF013450);
+Color dark = Color(0xFFAA3F4D);
 
-Color primary = Color(0XFF0191C5);
+Color primary = Color(0xFFDC4F64);
 
-Color light = Color(0XFF7BA4B2);
+Color light = Color(0XFFD8848F);
 
-Color extralight = Color(0XFFB4D0E8);
+Color extralight = Color(0XFFD8ADB3);
 
-Color accent = Color(0XFF4BCCD1);
+Color accent = Color(0XFFD39339);
 
-Color gold = Color(0XFFFED501);
+Color darkGreyColor = Color(0xFF212128);

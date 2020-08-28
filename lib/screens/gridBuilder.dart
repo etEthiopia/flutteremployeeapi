@@ -10,6 +10,7 @@ Widget gridBuilder(var context, bool por, List<Employee> emps) {
 
   return Container(
     child: GridView.builder(
+        itemCount: emps.length,
         gridDelegate:
             SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: col),
         itemBuilder: (BuildContext context, int index) {

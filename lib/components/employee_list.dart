@@ -11,12 +11,12 @@ Widget employeeList({Employee e}) {
     padding: EdgeInsets.all(10),
     decoration: BoxDecoration(boxShadow: [
       BoxShadow(
-        color: Colors.grey[300],
-        offset: const Offset(3.0, 3.0),
+        color: darksecond,
+        offset: const Offset(0.0, 3.0),
         blurRadius: 5.0,
         spreadRadius: 2.0,
       ),
-    ], color: Colors.white, borderRadius: BorderRadius.circular(10)),
+    ], color: primary, borderRadius: BorderRadius.circular(10)),
     child: Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
@@ -39,7 +39,7 @@ Widget employeeList({Employee e}) {
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
-                    color: dark, fontSize: 15, fontFamily: defaultFont),
+                    color: Colors.white, fontSize: 15, fontFamily: defaultFont),
               ),
             ],
           ),
@@ -55,18 +55,23 @@ Widget employeeList({Employee e}) {
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
-                      color: dark, fontSize: 17, fontFamily: defaultFont),
+                      color: Colors.white,
+                      fontSize: 17,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: defaultFont),
                 ),
                 Divider(
-                  color: Colors.grey[300],
-                  height: 10,
+                  color: Colors.white,
+                  thickness: 1,
                 ),
                 Text(
                   "Sal: ${e.salary} ETB",
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
-                      color: primary, fontSize: 12, fontFamily: defaultFont),
+                      color: Colors.white,
+                      fontSize: 12,
+                      fontFamily: defaultFont),
                 ),
                 SizedBox(
                   height: 5,
@@ -76,7 +81,7 @@ Widget employeeList({Employee e}) {
                     Text(
                       "Age: ",
                       style: TextStyle(
-                          color: primary,
+                          color: Colors.white,
                           fontSize: 12,
                           fontFamily: defaultFont),
                     ),
@@ -85,7 +90,9 @@ Widget employeeList({Employee e}) {
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
-                          color: dark, fontSize: 12, fontFamily: defaultFont),
+                          color: Colors.white,
+                          fontSize: 12,
+                          fontFamily: defaultFont),
                     ),
                   ],
                 ),
@@ -99,24 +106,28 @@ Widget employeeList({Employee e}) {
                 child: Container(
                     padding: const EdgeInsets.all(5.0),
                     decoration: new BoxDecoration(
-                      border: Border.all(color: dark),
+                      border: Border.all(
+                        color: Colors.white,
+                      ),
                       shape: BoxShape.circle,
                     ),
                     child: Icon(
                       Icons.edit,
-                      color: dark,
+                      color: Colors.white,
                       size: 13,
                     ))),
             Expanded(
                 child: Container(
                     padding: const EdgeInsets.all(5.0),
                     decoration: new BoxDecoration(
-                      border: Border.all(color: dark),
+                      border: Border.all(
+                        color: Colors.white,
+                      ),
                       shape: BoxShape.circle,
                     ),
                     child: Icon(
                       Icons.delete,
-                      color: dark,
+                      color: Colors.white,
                       size: 13,
                     ))),
           ],
@@ -128,7 +139,16 @@ Widget employeeList({Employee e}) {
 
 Widget _error(BuildContext context, String url, dynamic error) {
   print(error);
-  return Image.asset('assets/person.png');
+  return Container(
+    padding: EdgeInsets.all(5),
+    decoration: BoxDecoration(boxShadow: [
+      BoxShadow(
+        color: darksecond,
+      ),
+    ], color: darkGreyColor, borderRadius: BorderRadius.circular(10)),
+    child: Image.asset('assets/person.png'),
+  );
+  ;
 }
 
 Widget _progress(BuildContext context, String url, dynamic downloadProgress) {

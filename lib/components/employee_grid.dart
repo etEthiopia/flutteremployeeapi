@@ -8,10 +8,11 @@ Widget employeeGrid({Employee e}) {
       margin: EdgeInsets.all(5),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
+        color: darkGreyColor,
         boxShadow: [
           BoxShadow(
-            color: Colors.grey[300],
-            offset: const Offset(3.0, 3.0),
+            color: darksecond,
+            offset: const Offset(0.0, 3.0),
             blurRadius: 5.0,
             spreadRadius: 2.0,
           ),
@@ -20,21 +21,28 @@ Widget employeeGrid({Employee e}) {
       child: Hero(
           tag: e.name + e.id.toString(),
           child: Material(
-              borderRadius: BorderRadius.circular(15),
+              color: darkGreyColor,
+              borderRadius: BorderRadius.circular(10),
               child: InkWell(
                   onTap: () {},
                   child: GridTile(
                     child: Container(
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.all(Radius.circular(15)),
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
                         ),
-                        child: loadimage(e.image)),
+                        child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.only(
+                                  bottomLeft: Radius.circular(10),
+                                  bottomRight: Radius.circular(10)),
+                            ),
+                            child: loadimage(e.image))),
                     footer: Container(
                       decoration: BoxDecoration(
-                        color: Colors.white70,
+                        color: primary,
                         borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(15),
-                            bottomRight: Radius.circular(15)),
+                            bottomLeft: Radius.circular(10),
+                            bottomRight: Radius.circular(10)),
                       ),
                       padding:
                           EdgeInsets.symmetric(horizontal: 10.0, vertical: 5),
@@ -47,8 +55,8 @@ Widget employeeGrid({Employee e}) {
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
                             style: TextStyle(
-                                fontSize: 15,
-                                color: darksecond,
+                                fontSize: 12,
+                                color: Colors.white,
                                 fontWeight: FontWeight.bold),
                           ),
                           Row(
@@ -59,7 +67,9 @@ Widget employeeGrid({Employee e}) {
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
                                   style: TextStyle(
-                                      fontSize: 10, color: darksecond),
+                                    fontSize: 10,
+                                    color: Colors.white,
+                                  ),
                                 ),
                               ),
                               Expanded(
@@ -69,7 +79,9 @@ Widget employeeGrid({Employee e}) {
                                   overflow: TextOverflow.ellipsis,
                                   textAlign: TextAlign.end,
                                   style: TextStyle(
-                                      fontSize: 10, color: darksecond),
+                                    fontSize: 10,
+                                    color: Colors.white,
+                                  ),
                                 ),
                               )
                             ],
@@ -79,7 +91,10 @@ Widget employeeGrid({Employee e}) {
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                             textAlign: TextAlign.end,
-                            style: TextStyle(fontSize: 10, color: darksecond),
+                            style: TextStyle(
+                              fontSize: 10,
+                              color: Colors.white,
+                            ),
                           ),
                         ],
                       ),
@@ -89,7 +104,13 @@ Widget employeeGrid({Employee e}) {
 
 Widget _error(BuildContext context, String url, dynamic error) {
   print(error);
-  return Image.asset('assets/person.png');
+  return Container(
+      padding: EdgeInsets.all(25),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(10), bottomRight: Radius.circular(10)),
+      ),
+      child: Image.asset('assets/person.png'));
 }
 
 Widget _progress(BuildContext context, String url, dynamic downloadProgress) {
