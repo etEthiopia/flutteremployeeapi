@@ -4,13 +4,4 @@ GET http://dummy.restapiexample.com/api/v1/employees
 
 ###
 
-POST http://dummy.restapiexample.com/api/v1/create/
-Content-Type: application/json
-
-{
-  "employee_name": "Dagi Cox",
-  "employee_salary": "86000",
-  "employee_age": "66",
-  "profile_image": ""
-}
 
